@@ -1,0 +1,20 @@
+function wordsTracker(input) {
+    let words = input.shift().split(` `);
+    let sentance = input;
+    let foundWords = {};
+
+    words.forEach(element => {
+        let count = 0;
+        sentance.forEach(token => {
+            if (element === token) {
+                count++;
+            }
+        })
+        foundWords[element]=count;
+    })
+    let sorted = Object.entries(foundWords);
+    sorted.sort((a,b)=> b[1]-a[1]);
+    for(let [word,quantity] of sorted){
+        console.log(`${word} - ${quantity}`);
+    }
+}
